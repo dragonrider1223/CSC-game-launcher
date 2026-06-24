@@ -8,11 +8,32 @@
 import java.awt.event.*;
 public class Inputs  implements ActionListener, MouseListener
 {
+    Window window;
+    
+    public Inputs(Window window)
+    {
+        this.window = window;
+        
+    }
     
     public void actionPerformed(ActionEvent e){}
     public void mouseEntered(MouseEvent e) {}
     public void mouseExited(MouseEvent e) {}
-    public void mousePressed(MouseEvent e) {}
+    public void mousePressed(MouseEvent e) 
+    {
+        System.out.println(e.getX());
+        if(window.mainPanel.currentIndex<window.icons.length-1&&e.getX()>window.ScreenWidth*2/3)
+            window.mainPanel.currentIndex++;
+        else if(window.mainPanel.currentIndex>0&&e.getX()<window.ScreenWidth/3)
+            window.mainPanel.currentIndex--;
+        else
+            launchGame(window.gameDir+"/"+window.icons[window.mainPanel.currentIndex].gameName+"/"+window.icons[window.mainPanel.currentIndex].gameName+".exe");
+    }
     public void mouseReleased(MouseEvent e) {}
     public void mouseClicked(MouseEvent e) {}
+    
+    public void launchGame(String filePath)
+    {
+        
+    }
 }

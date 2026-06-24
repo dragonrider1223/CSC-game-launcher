@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Panel
+comment1.params=g
+comment1.target=void\ paintComponent(java.awt.Graphics)
+comment2.params=window
+comment2.target=Panel(Window)
+comment3.params=
+comment3.target=void\ startLoop()
+comment4.params=
+comment4.target=void\ drawAllIcons()
+comment5.params=
+comment5.target=void\ drawThreeIcons()
+numComments=6

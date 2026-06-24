@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=Icon
+comment1.params=gameName\ window
+comment1.target=Icon(java.lang.String,\ Window)
+comment2.params=g2\ x\ y\ size
+comment2.target=void\ drawIcon(java.awt.Graphics2D,\ int,\ int,\ int)
+numComments=3
