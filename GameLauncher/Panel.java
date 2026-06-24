@@ -30,7 +30,6 @@ public class Panel extends JPanel
         this.window = window;
     }
 
-    
 
     public void startLoop()
     {
@@ -42,25 +41,30 @@ public class Panel extends JPanel
     public void drawAllIcons()
     {
         int iconCount = window.icons.length;
-        int positionOffset =  window.ScreenWidth/(iconCount+1);
+        int positionOffset =  window.getWidth()/(iconCount+1);
         for(int i = 0; i< window.icons.length;i++)
         {
             if(g2!=null)
-                window.icons[i].drawIcon(g2,positionOffset*(i+1),window.ScreenHeight/2,128);
+                window.icons[i].drawIcon(g2,positionOffset*(i+1),window.getHeight()/2,128);
         }
     }
 
     public void drawThreeIcons()
     {
-        int positionOffset =  window.ScreenWidth/4;
+        int positionOffset =  window.getWidth()/4;
         for(int i = 0; i< 3;i++)
         {
             int size = iconSize;
+            if(window.getWidth()<window.getHeight())
+                size = (int)Math.floor(size*(float)window.getWidth()/(float)window.ScreenWidth);
+            else
+                size = (int)Math.floor(size*(float)window.getHeight()/(float)window.ScreenHeight);
+
             if(i%2!=0)
                 size*=middleIconMult;
             if(i-1+currentIndex<window.icons.length&&i-1+currentIndex>=0)
                 if(g2!=null)
-                    window.icons[i-1+currentIndex].drawIcon(g2,positionOffset*(i+1),window.ScreenHeight/2,size);
+                    window.icons[i-1+currentIndex].drawIcon(g2,positionOffset*(i+1),window.getHeight()/2,size);
         }
     }
 }
