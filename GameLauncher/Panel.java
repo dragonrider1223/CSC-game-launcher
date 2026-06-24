@@ -30,7 +30,6 @@ public class Panel extends JPanel
         this.window = window;
     }
 
-
     public void startLoop()
     {
         while(true){

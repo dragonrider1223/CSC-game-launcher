@@ -16,7 +16,7 @@ public class Window extends JFrame
     Panel mainPanel;
 
     public String gameDir = "./games";
-    
+
     Inputs input;
 
     Icon[] icons;
