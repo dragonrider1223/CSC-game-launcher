@@ -10,4 +10,6 @@ comment4.params=
 comment4.target=void\ drawAllIcons()
 comment5.params=
 comment5.target=void\ drawThreeIcons()
-numComments=6
+comment6.params=
+comment6.target=void\ drawArrows()
+numComments=7

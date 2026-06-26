@@ -20,6 +20,8 @@ public class Window extends JFrame
     Inputs input;
 
     Icon[] icons;
+    
+    Arrow[] arrows = new Arrow[2];
 
     public final int ScreenWidth = 1000;
     public final int ScreenHeight = 1000;
@@ -29,6 +31,9 @@ public class Window extends JFrame
     public Window()
     {
         input = new Inputs(this);
+
+        arrows[0] = new Arrow();
+        arrows[1] = new Arrow();
 
         String[] gameNames = getgames();
         icons = new Icon[gameNames.length];
@@ -44,6 +49,7 @@ public class Window extends JFrame
         this.add(mainPanel);
 
         this.addMouseListener(input);
+        this.addMouseMotionListener(input);
 
         this.pack();
         this.toFront();

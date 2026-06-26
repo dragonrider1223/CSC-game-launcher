@@ -18,10 +18,18 @@ public class Panel extends JPanel
 
     private int iconSize = 128;
     private int middleIconMult = 2;
+    private int selectedMult = 3;
+
+    public boolean selected = false;
+
+    public boolean leftArrowSelected = false;
+    public boolean rightArrowSelected = false;
+    private int arrowSelectedMult = 2;
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         g2 = (Graphics2D)g;
+        drawArrows();
         drawThreeIcons();
     }
 
@@ -59,11 +67,40 @@ public class Panel extends JPanel
             else
                 size = (int)Math.floor(size*(float)window.getHeight()/(float)window.ScreenHeight);
 
-            if(i%2!=0)
-                size*=middleIconMult;
+            if(i%2!=0){
+                if(selected)
+                    size*=selectedMult;
+                else
+                    size*=middleIconMult;
+            }
             if(i-1+currentIndex<window.icons.length&&i-1+currentIndex>=0)
                 if(g2!=null)
                     window.icons[i-1+currentIndex].drawIcon(g2,positionOffset*(i+1),window.getHeight()/2,size);
         }
     }
+
+    public void drawArrows()
+    {
+        int positionOffset =  window.getWidth()/10;
+
+        int size = iconSize;
+        if(window.getWidth()<window.getHeight())
+            size = (int)Math.floor(size*(float)window.getWidth()/(float)window.ScreenWidth);
+        else
+            size = (int)Math.floor(size*(float)window.getHeight()/(float)window.ScreenHeight);
+
+        if(currentIndex>0){
+            if(leftArrowSelected)
+                window.arrows[0].drawArrow(g2,positionOffset,window.getHeight()/2,size*arrowSelectedMult,true);
+            else 
+                window.arrows[0].drawArrow(g2,positionOffset,window.getHeight()/2,size,true);
+        }
+        if(currentIndex<window.icons.length-1){
+            if(rightArrowSelected)
+                window.arrows[0].drawArrow(g2,positionOffset*9,window.getHeight()/2,size*arrowSelectedMult,false);
+            else 
+                window.arrows[0].drawArrow(g2,positionOffset*9,window.getHeight()/2,size,false);
+        }
+    }
+
 }
