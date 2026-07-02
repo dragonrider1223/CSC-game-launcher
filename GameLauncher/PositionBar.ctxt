@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=PositionBar
+comment1.params=window\ widthPercentage\ heightPercentage\ yPos
+comment1.target=PositionBar(Window,\ float,\ float,\ int)
+comment2.params=g2\ x\ y\ size
+comment2.target=void\ drawCircle(java.awt.Graphics2D,\ int,\ int,\ int)
+numComments=3
