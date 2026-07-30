@@ -25,11 +25,16 @@ public class Panel extends JPanel
     public boolean leftArrowSelected = false;
     public boolean rightArrowSelected = false;
     private int arrowSelectedMult = 2;
-    
+
     private PositionBar posBar;
-    float posBarWidthPercentage =0.5f;
-    float posBarHeightPosPercentage =0.9f;
-    float posBarSizePercentage =0.02f;
+    private float posBarWidthPercentage =0.5f;
+    private float posBarHeightPosPercentage =0.9f;
+    private float posBarSizePercentage =0.02f;
+
+    private int closeOffset = 20;
+    private float closeHoverMult = 1.2f;
+    public boolean closeSelected = false;
+    private int closeSize = 128;
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -37,6 +42,7 @@ public class Panel extends JPanel
         drawArrows();
         drawThreeIcons();
         posBar.drawBar(g2,currentIndex);
+        drawClose();
     }
 
     public Panel(Window window)
@@ -61,6 +67,19 @@ public class Panel extends JPanel
             if(g2!=null)
                 window.icons[i].drawIcon(g2,positionOffset*(i+1),window.getHeight()/2,128);
         }
+    }
+
+    public void drawClose()
+    {
+        int size = closeSize;
+        if(window.getWidth()<window.getHeight())
+            size = (int)Math.floor(size*(float)window.getWidth()/(float)window.ScreenWidth);
+        else
+            size = (int)Math.floor(size*(float)window.getHeight()/(float)window.ScreenHeight);
+        if(closeSelected)
+            size*=closeHoverMult;
+
+        window.close.draw(g2,size/2+closeOffset,size/2+closeOffset,size);
     }
 
     public void drawThreeIcons()

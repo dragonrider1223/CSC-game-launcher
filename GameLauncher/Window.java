@@ -22,6 +22,7 @@ public class Window extends JFrame
     Icon[] icons;
     
     Arrow[] arrows = new Arrow[2];
+    CloseIcon close = new CloseIcon();
 
     public final int ScreenWidth = 1000;
     public final int ScreenHeight = 1000;
@@ -34,6 +35,7 @@ public class Window extends JFrame
 
         arrows[0] = new Arrow();
         arrows[1] = new Arrow();
+        close = new CloseIcon();
 
         String[] gameNames = getgames();
         icons = new Icon[gameNames.length];
