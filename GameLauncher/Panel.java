@@ -25,17 +25,24 @@ public class Panel extends JPanel
     public boolean leftArrowSelected = false;
     public boolean rightArrowSelected = false;
     private int arrowSelectedMult = 2;
+    
+    private PositionBar posBar;
+    float posBarWidthPercentage =0.5f;
+    float posBarHeightPosPercentage =0.9f;
+    float posBarSizePercentage =0.02f;
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         g2 = (Graphics2D)g;
         drawArrows();
         drawThreeIcons();
+        posBar.drawBar(g2,currentIndex);
     }
 
     public Panel(Window window)
     {
         this.window = window;
+        posBar = new PositionBar(window,posBarWidthPercentage,posBarHeightPosPercentage,posBarSizePercentage);
     }
 
     public void startLoop()

@@ -18,17 +18,36 @@ public class PositionBar
 
     float widthPercentage;
     float heightPercentage;
+    float sizePercentage;
 
-    int yPos;
-
-    public PositionBar(Window window,float widthPercentage, float heightPercentage,int yPos)
+    public PositionBar(Window window,float widthPercentage, float heightPercentage,float sizePercentage)
     {
         this.iconCount = window.icons.length;
         this.window = window;
+        this.heightPercentage = heightPercentage;
+        this.sizePercentage = sizePercentage;
+        this.widthPercentage = widthPercentage;
     }
 
-    public void drawCircle(Graphics2D g2,int x,int y,int size)
+    public void drawBar(Graphics2D g2,int index)
     {
-        g2.drawOval( x-size/2, y-size/2,size,size);
+        float width = window.getWidth()*widthPercentage;
+        float height = window.getHeight()*sizePercentage;
+        float xPos = window.getWidth()/2-width/2;
+        float yPos = window.getHeight()*heightPercentage-(height/2);
+        float iconOffset = width/(iconCount+1);
+        for(int i = 1;i<=iconCount;i++)
+        {
+            
+            drawCircle(g2,Math.round(xPos+iconOffset*i),Math.round(yPos),Math.round(height),(index==i-1));
+        }
+    }
+    
+    public void drawCircle(Graphics2D g2,int x,int y,int size,boolean filled)
+    {
+        if(!filled)
+            g2.drawOval( x-size/2, y-size/2,size,size);
+        else
+            g2.fillOval( x-size/2, y-size/2,size,size);
     }
 }
